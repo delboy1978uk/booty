@@ -26,6 +26,9 @@ class AssetManagerTest extends \Codeception\TestCase\Test
     {
         // unset the blank class after each test
         unset($this->booty);
+        unlink('tests/_data/public/assets/js/test.js');
+        unlink('tests/_data/public/assets/img/me.jpg');
+        unlink('tests/_data/public/assets/css/style.css');
     }
 
     /**
@@ -33,8 +36,12 @@ class AssetManagerTest extends \Codeception\TestCase\Test
      */
     public function testBlah()
     {
-        $this->assertEquals('Ready to start building tests', $this->booty->blah());
+        $am = $this->booty;
+        $am->addAssetsFolder('tests/_data/some-module/assets/');
+        $am->setDestinationFolder('tests/_data/public/assets/');
+        $am->deployAssets();
+        $this->assertFileExists('tests/_data/public/assets/js/test.js');
+        $this->assertFileExists('tests/_data/public/assets/img/me.jpg');
+        $this->assertFileExists('tests/_data/public/assets/css/style.css');
     }
-
-
 }
