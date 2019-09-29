@@ -1,0 +1,21 @@
+{
+    "name": "delboy1978uk/booty",
+    "description": "Booty is an asset manager for Bone MVC Framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek Stephen McLean",
+            "email": "delboy1978uk@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev":{
+        "codeception/codeception":"*"
+    },
+    "autoload":{
+        "psr-4":{
+            "Del\\Booty":"src/"
+        }
+    }
+}
