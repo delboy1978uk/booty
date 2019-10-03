@@ -15,7 +15,7 @@
     },
     "autoload":{
         "psr-4":{
-            "Del\\Booty":"src/"
+            "Del\\Booty\\":"src/"
         }
     }
 }
