@@ -1,24 +1,37 @@
 #!/usr/bin/env php
 <?php
-    if(count($argv) == 1)
-        {
-        echo "\n\nblank\n";
-        echo "======================================\n\n";
-        echo "Usage: ./blank command\n\n";
-        echo " \n";
-        exit;
-    }
 
-    require_once('../vendor/autoload.php');
+$path = file_exists('vendor/autoload.php') ? 'vendor/autoload.php' : '../../../autoload.php';
 
-    echo "\n";
+require_once $path;
 
-    use Del;
-    try {
-        $x = new Blank();
-        echo $x->blah();
-    }
-    catch(Exception $e){
-        echo "There was a problem. \n".$e->getMessage()."\n\n";
-    }
-    echo "\n";
+use Del\Booty\BootyCommand;
+use Del\Generator\ClearBuildsCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Helper\HelperSet;
+use Symfony\Component\Console\Helper\QuestionHelper;
+
+
+$config = [];
+if (file_exists('config/packages.php')) {
+    $config = require_once 'config/packages.php';
+}
+
+if (empty($config)) {
+    echo "No config/packages.php config found.\n";
+} else {
+
+    $containerSvc = ContainerService::getInstance();
+    $helperSet = new HelperSet();
+    $helperSet->set(new QuestionHelper());
+    $booty = new BootyCommand();
+
+    $app = new Application('Booty Asset Manager');
+    $app->setHelperSet($helperSet);
+    $app->add($blankCommand);
+    $app->add($generatorCommand);
+    $app->add($mvcCommand);
+    $app->add($clearCommand);
+    $app->add($packageCommand);
+    $app->run();
+}
