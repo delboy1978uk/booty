@@ -3,8 +3,9 @@
 
 $path = file_exists('vendor/autoload.php') ? 'vendor/autoload.php' : '../../../autoload.php';
 
-require_once $path;
+$composer = require_once $path;
 
+use Composer\Autoload\ClassLoader;
 use Del\Booty\BootyCommand;
 use Del\Generator\ClearBuildsCommand;
 use Symfony\Component\Console\Application;
@@ -21,17 +22,12 @@ if (empty($config)) {
     echo "No config/packages.php config found.\n";
 } else {
 
-    $containerSvc = ContainerService::getInstance();
     $helperSet = new HelperSet();
     $helperSet->set(new QuestionHelper());
-    $booty = new BootyCommand();
+    $booty = new BootyCommand(null, $config['packages'], $composer);
 
     $app = new Application('Booty Asset Manager');
     $app->setHelperSet($helperSet);
-    $app->add($blankCommand);
-    $app->add($generatorCommand);
-    $app->add($mvcCommand);
-    $app->add($clearCommand);
-    $app->add($packageCommand);
+    $app->add($booty);
     $app->run();
 }
