@@ -34,7 +34,11 @@ class BootyCommandTest extends Test
     protected function _after()
     {
         unset($this->booty);
-        unlink('tests/_data/public/some-module');
+        try {
+            unlink('tests/_data/public/some-module');
+        } catch (Exception $e) {
+            // Travis doesn't like symlinking?
+        }
     }
 
     /**
@@ -50,7 +54,7 @@ class BootyCommandTest extends Test
             $this->assertFileExists('tests/_data/public/some-module/img/me.jpg');
             $this->assertFileExists('tests/_data/public/some-module/css/style.css');
         } catch (Exception $e) {
-            // Travis doesn't like symlinking
+            // Travis doesn't like symlinking?
         }
     }
 }
