@@ -45,7 +45,8 @@ class BootyCommand extends Command
         $this->booty->setDestinationFolder($this->destination);
         foreach ($this->packages as $package) {
             $moduleName = str_replace('Package', '', $package);
-            $moduleName = end(explode('\\', $moduleName));
+            $explosion = explode('\\', $moduleName);
+            $moduleName = end($explosion);
             $file = realpath($this->composer->findFile($package));
             $folder = dirname($file);
             $folder = substr($folder, -4) == '/src' ? substr($folder, 0, -4) : $folder;

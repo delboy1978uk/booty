@@ -18,13 +18,11 @@ class AssetManagerTest extends \Codeception\TestCase\Test
 
     protected function _before()
     {
-        // create a fresh blank class before each test
         $this->booty = new AssetManager();
     }
 
     protected function _after()
     {
-        // unset the blank class after each test
         unset($this->booty);
         unlink('tests/_data/public/some-module');
     }
@@ -32,7 +30,7 @@ class AssetManagerTest extends \Codeception\TestCase\Test
     /**
      * Check tests are working
      */
-    public function testBlah()
+    public function testDeploy()
     {
         $am = $this->booty;
         $am->addAssetsFolder('SomeModule', 'tests/_data/SomeModule/assets/');
