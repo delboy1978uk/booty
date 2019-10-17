@@ -43,9 +43,29 @@ class AssetManager
     public function deployAssets(): bool
     {
         foreach ($this->assetFolders as $key => $dir) {
+            $key = $this->camelCaseToDash($key);
             symlink($dir, $this->destinationFolder . '/' . $key);
         }
 
         return true;
+    }
+
+    /**
+     * @param string $key
+     * @return string
+     */
+    private function camelCaseToDash(string $key): string
+    {
+        $newKey = '';
+
+        foreach (str_split($key) as $index => $letter) {
+            if (ctype_upper($letter)) {
+                $letter = strtolower($letter);
+                $letter = $index < 1 ? $letter : '-' . $letter;
+            }
+            $newKey .= $letter;
+        }
+
+        return $newKey;
     }
 }

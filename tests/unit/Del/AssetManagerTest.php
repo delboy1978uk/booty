@@ -35,7 +35,7 @@ class AssetManagerTest extends \Codeception\TestCase\Test
     public function testBlah()
     {
         $am = $this->booty;
-        $am->addAssetsFolder('some-module', 'tests/_data/some-module/assets/');
+        $am->addAssetsFolder('SomeModule', 'tests/_data/SomeModule/assets/');
         $am->setDestinationFolder('tests/_data/public/');
         $am->deployAssets();
         $this->assertFileExists('tests/_data/public/some-module/js/test.js');
