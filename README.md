@@ -18,3 +18,7 @@ $am->addAssetsFolder('another/folder/with/css/js/etc');
 $am->setDestinationFolder('/var/www/html/public/');
 $am->deployAssets();
 ```
+## bone mvc cli usage
+```
+
+```

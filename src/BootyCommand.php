@@ -51,9 +51,9 @@ class BootyCommand extends Command
             $folder = dirname($file);
             $folder = substr($folder, -4) == '/src' ? substr($folder, 0, -4) : $folder;
 
-            if (file_exists($folder . '/assets')) {
+            if (file_exists($folder . '/data/assets')) {
                 $output->writeln('Adding assets from ' . $moduleName . ' module..');
-                $this->booty->addAssetsFolder($moduleName, $folder . '/assets');
+                $this->booty->addAssetsFolder($moduleName, $folder . '/data/assets');
             }
         }
         $output->writeln('Deploying assets to ' . $this->destination);
