@@ -17,5 +17,8 @@
         "psr-4":{
             "Del\\Booty\\":"src/"
         }
-    }
+    },
+    "bin": [
+        "bin/booty"
+    ],
 }
