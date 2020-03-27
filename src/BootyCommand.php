@@ -58,5 +58,7 @@ class BootyCommand extends Command
         }
         $output->writeln('Deploying assets to ' . $this->destination);
         $this->booty->deployAssets();
+
+        return 0;
     }
 }
