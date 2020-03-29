@@ -1,6 +1,6 @@
 {
     "name": "delboy1978uk/booty",
-    "description": "Booty is an asset manager for Bone MVC Framework",
+    "description": "Booty is an asset manager for Bone Framework",
     "license": "MIT",
     "authors": [
         {
@@ -12,7 +12,7 @@
     },
     "require-dev":{
         "codeception/codeception":"^4.0",
-        "codeception/module-asserts":"^1.1",
+        "codeception/module-asserts":"^1.1"
     },
     "autoload":{
         "psr-4":{

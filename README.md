@@ -1,6 +1,6 @@
 # booty
 [![Build Status](https://travis-ci.org/delboy1978uk/booty.png?branch=master)](https://travis-ci.org/delboy1978uk/booty) [![Code Coverage](https://scrutinizer-ci.com/g/delboy1978uk/booty/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/booty/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/delboy1978uk/booty/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/delboy1978uk/booty/?branch=master) <br />
-Booty is an asset deployment tool with an optional cli command for use with Bone MVC Framework. v1.0 currently takes an array of source folders with a key, and 
+Booty is an asset deployment tool with an optional cli command for use with Bone Framework. v1.0 currently takes an array of source folders with a key, and 
 deploys a symlink to your destination folder (usually your web server's `public/` folder) 
 ## installation
 `
@@ -20,9 +20,13 @@ $am->addAssetsFolder('another', 'another/folder/with/css/js/etc');
 $am->setDestinationFolder('/var/www/html/public/');
 $am->deployAssets();
 ```
-## bone mvc cli usage
-This command will pick up all Bone MVC Framework `src/` and `vendor/` packages and use the asset manager to deploy the 
+## bone cli usage
+This command will pick up all Bone Framework `src/` and `vendor/` packages and use the asset manager to deploy the 
 files to the `public/` directory. In your terminal:
 ```
-booty deploy
+bone assets:deploy
+```
+or aliased:
+```
+bone a:d
 ```
