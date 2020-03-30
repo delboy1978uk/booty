@@ -43,22 +43,30 @@ class BootyCommand extends Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $this->booty->setDestinationFolder($this->destination);
-        foreach ($this->packages as $package) {
-            $moduleName = str_replace('Package', '', $package);
-            $explosion = explode('\\', $moduleName);
-            $moduleName = end($explosion);
-            $file = realpath($this->composer->findFile($package));
-            $folder = dirname($file);
-            $folder = substr($folder, -4) == '/src' ? substr($folder, 0, -4) : $folder;
 
-            if (file_exists($folder . '/data/assets')) {
-                $output->writeln('Adding assets from ' . $moduleName . ' module..');
-                $this->booty->addAssetsFolder($moduleName, $folder . '/data/assets');
+        foreach ($this->packages as $packageName) {
+            $package = new $packageName();
+
+            if ($package instanceof AssetRegistrationInterface) {
+                $output->writeln('Adding assets from ' . $packageName . '..');
+                $paths = $package->getAssetFolders();
+                $this->handleAssetFolders($paths);
             }
         }
+
         $output->writeln('Deploying assets to ' . $this->destination);
         $this->booty->deployAssets();
 
         return 0;
+    }
+
+    /**
+     * @param array $paths
+     */
+    private function handleAssetFolders(array $paths): void
+    {
+        foreach ($paths as $key => $path) {
+            $this->booty->addAssetsFolder($key, $path);
+        }
     }
 }

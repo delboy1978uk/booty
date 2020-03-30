@@ -44,9 +44,10 @@ class AssetManager
     {
         foreach ($this->assetFolders as $key => $dir) {
             $key = $this->camelCaseToDash($key);
+            $linkFolder = $this->destinationFolder . '/' . $key;
 
-            if (!file_exists($key)) {
-                symlink($dir, $this->destinationFolder . '/' . $key);
+            if (!file_exists($linkFolder)) {
+                symlink($dir, $linkFolder);
             }
         }
 
