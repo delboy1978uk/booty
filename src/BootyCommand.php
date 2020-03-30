@@ -45,6 +45,8 @@ class BootyCommand extends Command
         $this->booty->setDestinationFolder($this->destination);
 
         foreach ($this->packages as $packageName) {
+
+            $packageName = strpos($packageName, '\\') === 0 ? $packageName : '\\' . $packageName;
             $package = new $packageName();
 
             if ($package instanceof AssetRegistrationInterface) {

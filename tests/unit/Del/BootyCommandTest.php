@@ -2,6 +2,7 @@
 
 namespace Del;
 
+use Acme\SomeModulePackage;
 use Codeception\TestCase\Test;
 use Composer\Autoload\ClassLoader;
 use Del\Booty\AssetManager;
@@ -28,7 +29,7 @@ class BootyCommandTest extends Test
         $composer = $this->getMockBuilder(ClassLoader::class)->getMock();
         $composer->method('findFile')->willReturn('tests/_data/SomeModule/src/SomeModulePackage.php');
 
-        $this->booty = new BootyCommand(null, ['SomeModule'], $composer);
+        $this->booty = new BootyCommand(null, [SomeModulePackage::class], $composer);
     }
 
     protected function _after()

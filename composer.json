@@ -19,6 +19,11 @@
             "Del\\Booty\\":"src/"
         }
     },
+    "autoload-dev":{
+        "psr-4":{
+            "Acme\\": "tests/_data/SomeModule/src/"
+        }
+    },
     "bin": [
         "bin/booty"
     ]
