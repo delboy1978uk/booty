@@ -5,17 +5,14 @@ namespace Del\Booty;
 class AssetManager
 {
     /** @var string[] $assetFolders */
-    private $assetFolders = [];
+    private array $assetFolders = [];
 
     /** @var string $destinationFolder */
-    private $destinationFolder = '';
+    private string $destinationFolder = '';
 
     /** @var array $deployInfo */
-    private $deployInfo = [];
+    private array $deployInfo = [];
 
-    /**
-     * @return string
-     */
     public function addAssetsFolder(string $key, string $dir): void
     {
         $dir = realpath($dir);
@@ -25,9 +22,6 @@ class AssetManager
         }
     }
 
-    /**
-     * @return string
-     */
     public function setDestinationFolder(string $dir): void
     {
         $dir = realpath($dir);
@@ -37,9 +31,6 @@ class AssetManager
         }
     }
 
-    /**
-     * @return bool
-     */
     public function deployAssets(): bool
     {
         foreach ($this->assetFolders as $key => $dir) {
@@ -54,10 +45,6 @@ class AssetManager
         return true;
     }
 
-    /**
-     * @param string $key
-     * @return string
-     */
     private function camelCaseToDash(string $key): string
     {
         $newKey = '';

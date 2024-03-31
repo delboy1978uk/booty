@@ -4,7 +4,7 @@ namespace Del;
 
 use Del\Booty\AssetManager;
 
-class AssetManagerTest extends \Codeception\TestCase\Test
+class AssetManagerTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester

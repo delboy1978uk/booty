@@ -3,7 +3,7 @@
 namespace Del;
 
 use Acme\SomeModulePackage;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Composer\Autoload\ClassLoader;
 use Del\Booty\AssetManager;
 use Del\Booty\BootyCommand;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\StreamOutput;
 
-class BootyCommandTest extends Test
+class BootyCommandTest extends Unit
 {
     /**
      * @var \UnitTester

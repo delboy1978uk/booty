@@ -9,17 +9,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class BootyCommand extends Command
 {
-    /** @var array */
-    private $packages;
-
-    /** @var AssetManager $booty */
-    private $booty;
-
-    /** @var ClassLoader $composer */
-    private $composer;
-
-    /** @var string $destination */
-    private $destination = 'public/';
+    private array $packages;
+    private AssetManager $booty;
+    private ClassLoader $composer;
+    private string $destination = 'public/';
 
     public function __construct(string $name = null, array $packages, ClassLoader $composer)
     {
@@ -40,7 +33,7 @@ class BootyCommand extends Command
      * @param OutputInterface $output
      * @return int|void|null
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->booty->setDestinationFolder($this->destination);
 
@@ -59,7 +52,7 @@ class BootyCommand extends Command
         $output->writeln('Deploying assets to ' . $this->destination);
         $this->booty->deployAssets();
 
-        return 0;
+        return Command::SUCCESS;
     }
 
     /**
