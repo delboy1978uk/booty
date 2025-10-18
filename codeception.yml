@@ -3,10 +3,8 @@ support_namespace: Support
 actor_suffix: Tester
 paths:
     tests: tests
-    data: tests/_data
-    helpers: tests/_support
-    bootstrap: _bootstrap.php
     output: tests/_output
+    data: tests/Support/Data
     support: tests/Support
     envs: tests/_envs
 settings:
@@ -26,5 +24,4 @@ coverage:
     enabled: true
     whitelist:
         include:
-            - src/App/Controller/*
-            - src/App/AppPackage.php
+            - src/

@@ -22,8 +22,10 @@
         }
     },
     "autoload-dev":{
-        "psr-4":{
-            "Acme\\": "tests/_data/SomeModule/src/"
+        "psr-4": {
+            "Acme\\": "tests/_data/SomeModule/src/",
+            "Codeception\\Module": "tests/Support",
+            "Tests\\": "tests"
         }
     },
     "bin": [
