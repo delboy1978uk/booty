@@ -4,8 +4,5 @@ namespace Del\Booty;
 
 interface AssetRegistrationInterface
 {
-    /**
-     * @return array
-     */
     public function getAssetFolders(): array;
 }

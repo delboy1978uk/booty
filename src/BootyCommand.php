@@ -2,7 +2,6 @@
 
 namespace Del\Booty;
 
-use Composer\Autoload\ClassLoader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -11,15 +10,13 @@ class BootyCommand extends Command
 {
     private array $packages;
     private AssetManager $booty;
-    private ClassLoader $composer;
     private string $destination = 'public/';
 
-    public function __construct(string $name = null, array $packages, ClassLoader $composer)
+    public function __construct(?string $name = null, array $packages)
     {
         parent::__construct($name);
         $this->packages = $packages;
         $this->booty = new AssetManager();
-        $this->composer = $composer;
     }
 
     protected function configure()
@@ -28,11 +25,6 @@ class BootyCommand extends Command
         $this->setName('deploy');
     }
 
-    /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return int|void|null
-     */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->booty->setDestinationFolder($this->destination);
@@ -55,9 +47,6 @@ class BootyCommand extends Command
         return Command::SUCCESS;
     }
 
-    /**
-     * @param array $paths
-     */
     private function handleAssetFolders(array $paths): void
     {
         foreach ($paths as $key => $path) {

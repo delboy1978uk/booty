@@ -7,7 +7,6 @@ $composer = require_once $path;
 
 use Composer\Autoload\ClassLoader;
 use Del\Booty\BootyCommand;
-use Del\Generator\ClearBuildsCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Helper\QuestionHelper;

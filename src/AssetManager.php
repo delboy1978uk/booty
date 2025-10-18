@@ -4,14 +4,8 @@ namespace Del\Booty;
 
 class AssetManager
 {
-    /** @var string[] $assetFolders */
     private array $assetFolders = [];
-
-    /** @var string $destinationFolder */
     private string $destinationFolder = '';
-
-    /** @var array $deployInfo */
-    private array $deployInfo = [];
 
     public function addAssetsFolder(string $key, string $dir): void
     {
