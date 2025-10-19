@@ -53,4 +53,9 @@ class BootyCommand extends Command
             $this->booty->addAssetsFolder($key, $path);
         }
     }
+
+    public function setDestination(string $destination): void
+    {
+        $this->booty->setDestinationFolder($destination);
+    }
 }

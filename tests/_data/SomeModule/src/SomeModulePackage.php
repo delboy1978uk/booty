@@ -9,7 +9,7 @@ class SomeModulePackage implements AssetRegistrationInterface
     public function getAssetFolders(): array
     {
         return [
-            'some-module' => __DIR__ . '../data/assets',
+            'some-module' => __DIR__ . '/../data/assets',
         ];
     }
 }
