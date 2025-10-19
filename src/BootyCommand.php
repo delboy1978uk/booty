@@ -12,7 +12,7 @@ class BootyCommand extends Command
     private AssetManager $booty;
     private string $destination = 'public/';
 
-    public function __construct(?string $name = null, array $packages)
+    public function __construct(?string $name, array $packages)
     {
         parent::__construct($name);
         $this->packages = $packages;
